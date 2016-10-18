@@ -1,0 +1,11 @@
+%tr
+  %td
+    = product.name
+  %td
+    = product.master_price
+  %td
+    = link_to edit_admin_product_path(product), class: 'btn btn-primary btn-sm' do
+      %span.glyphicon.glyphicon-edit
+
+    = link_to admin_product_path(product), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm' do
+      %span.glyphicon.glyphicon-remove
