@@ -1,0 +1,21 @@
+.container
+  .row
+    .col-md-12
+      %h2
+        %a{href: admin_products_path}
+          Products
+        \/ New product
+
+      = bootstrap_form_for([:admin, @product]) do |f|
+        = f.text_field :name
+        .row
+          .col-md-6
+            = f.text_field :available_on, class: 'datepicker'
+          .col-md-6
+            = f.text_field :master_price
+
+        = f.submit class: 'btn btn-success'
+
+        = link_to admin_products_path, class: 'btn btn-default' do
+          %span.glyphicon.glyphicon-remove
+          Cancel

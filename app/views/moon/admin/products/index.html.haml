@@ -1,0 +1,21 @@
+.container
+  .row
+    .col-md-12
+      %h2 Products
+
+      = display_success_alert(notice)
+
+      %table.table.table-striped
+        %thead
+          %tr
+            %th
+              Name
+            %th
+              Master price
+            %th
+        %tbody
+          = render partial: 'moon/admin/products/product', collection: @products
+
+      = link_to new_admin_product_path, class: 'btn btn-success' do
+        %span.glyphicon.glyphicon-plus
+        New product
