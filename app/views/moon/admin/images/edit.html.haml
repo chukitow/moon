@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-md-4.col-md-push-8
+      = render partial: 'moon/admin/shared/product_side_bar', locals: { option: { images: 'active' } }
+    .col-md-8.col-md-pull-4
+      %h2
+        %a{href: admin_products_path}
+          Products
+        \/ #{@product.name}
+
+      .panel.panel-default
+        .panel-body
+          = bootstrap_form_for [:admin, @product, @image], url: admin_product_image_path(@product, @image), method: :put do |f|
+            .row
+              .col-md-4
+                = image_tag(@image.attachment_file_name.url, class: 'img-responsive', alt: @image.alt)
+              .col-md-4
+                = f.file_field :attachment_file_name
+              .col-md-4
+                = f.text_area :alt, label: 'Alternative text', rows: 4
+
+            %br
+            = f.submit class: 'btn btn-success'
+
+            = link_to admin_product_images_path(@product), class: 'btn btn-default' do
+              %span.glyphicon.glyphicon-remove
+              Cancel
