@@ -1,0 +1,11 @@
+%tr
+  %td
+    = image_tag(image.attachment_file_name.url, class: 'img-responsive', alt: image.alt)
+  %td
+    = image.alt
+  %td
+    = link_to edit_admin_product_image_path(@product, image), class: 'btn btn-primary btn-sm' do
+      %span.glyphicon.glyphicon-edit
+
+    = link_to admin_product_image_path(@product, image), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm' do
+      %span.glyphicon.glyphicon-remove

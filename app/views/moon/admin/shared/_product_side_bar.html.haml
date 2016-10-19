@@ -3,3 +3,8 @@
     %a{href: edit_admin_product_path(@product)}
       %span.glyphicon.glyphicon-pencil
       Details
+
+  %li{class: "#{option[:images]}", role: 'presentation'}
+    %a{href: admin_product_images_path(@product)}
+      %span.glyphicon.glyphicon-picture
+      Images

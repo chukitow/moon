@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-rails',    '~> 4.1'
   s.add_dependency 'bootstrap_form',  '~> 2.3.0'
   s.add_dependency 'bootstrap-datepicker-rails',  '~> 1.6.4.1'
+  s.add_dependency 'acts_as_list',    '~> 0.8.2'
+  s.add_dependency 'carrierwave',     '~> 0.11.2'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency 'rspec-rails'
