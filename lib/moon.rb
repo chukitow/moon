@@ -6,6 +6,7 @@ require 'jquery-rails'
 require 'bootstrap_form'
 require 'bootstrap-datepicker-rails'
 require 'carrierwave'
+require 'cocoon'
 require "moon/engine"
 
 module Moon
