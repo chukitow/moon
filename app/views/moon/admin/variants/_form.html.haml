@@ -1,0 +1,13 @@
+= bootstrap_form_for([:admin, @product, @variant]) do |f|
+  = f.text_field :name, label: 'Presentation'
+  .row
+    .col-md-6
+      = f.text_field :sku
+    .col-md-6
+      = f.text_field :price
+
+  = f.submit class: 'btn btn-success'
+
+  = link_to admin_product_variants_path(@product), class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-remove
+    Cancel

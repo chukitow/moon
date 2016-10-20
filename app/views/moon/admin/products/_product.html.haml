@@ -2,7 +2,7 @@
   %td
     = product.name
   %td
-    = product.master_price
+    = product.master_variant.price
   %td
     = link_to edit_admin_product_path(product), class: 'btn btn-primary btn-sm' do
       %span.glyphicon.glyphicon-edit
