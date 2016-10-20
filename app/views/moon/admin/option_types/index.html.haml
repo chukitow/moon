@@ -1,0 +1,21 @@
+.container
+  .row
+    .col-md-12
+      %h2 Option Types
+
+      = display_success_alert(notice)
+
+      %table.table.table-striped
+        %thead
+          %tr
+            %th
+              Name
+            %th
+              Presentation
+            %th
+        %tbody
+          = render partial: 'moon/admin/option_types/option_type', collection: @option_types
+
+      = link_to new_admin_option_type_path, class: 'btn btn-success' do
+        %span.glyphicon.glyphicon-plus
+        New option type
