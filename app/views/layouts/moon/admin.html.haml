@@ -18,7 +18,14 @@
           %a.navbar-brand{:href => "#"} Moon ecommerce
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li
-              %a{href: admin_products_path}
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 Products
+                %b.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => admin_products_path} Products
+                  %li
+                    %a{:href => admin_option_types_path} Option types
     = yield
+

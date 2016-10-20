@@ -45,7 +45,7 @@ class Moon::Admin::ProductsController < Moon::Admin::BaseController
   def product_params
     params.require(:product).permit(
       :name, :master_price, :available_on, :description, :meta_title,
-      :meta_keywords, :meta_description
+      :meta_keywords, :meta_description, option_type_ids: []
     )
   end
 end

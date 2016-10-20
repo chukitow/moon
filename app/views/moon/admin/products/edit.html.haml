@@ -20,6 +20,7 @@
             = f.text_field :available_on, class: 'datepicker'
 
 
+        = f.collection_check_boxes :option_type_ids, Moon::OptionType.all, :id, :name, label: 'Option types'
         = f.text_field :meta_title
         = f.text_field :meta_keywords
         = f.text_field :meta_description
