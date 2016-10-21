@@ -1,5 +1,6 @@
 class Moon::OptionType < ActiveRecord::Base
   has_many :option_values, -> { order(position: :asc) }, dependent: :destroy
+  has_many :product_option_types, dependent: :destroy
 
   acts_as_list
 

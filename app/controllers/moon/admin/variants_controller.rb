@@ -1,9 +1,10 @@
 class Moon::Admin::VariantsController < Moon::Admin::BaseController
   before_action :set_product
+  before_action :redirect_on_empty_option_values, only: [:new]
   before_action :set_variant, only: [:edit, :update, :destroy]
 
   def index
-    @variants = @product.variants
+    @variants = @product.variants.not_master
   end
 
   def new
@@ -31,7 +32,7 @@ class Moon::Admin::VariantsController < Moon::Admin::BaseController
     end
   end
 
-  def delete
+  def destroy
     @variant.destroy
 
     redirect_to admin_product_variants_path(@product), notice: 'Your variant has been successfully deleted.'
@@ -47,6 +48,10 @@ class Moon::Admin::VariantsController < Moon::Admin::BaseController
   end
 
   def variant_params
-    params.require(:variant).permit(:name, :sku, :price)
+    params.require(:variant).permit(:name, :sku, :price, option_value_ids: [])
+  end
+
+  def redirect_on_empty_option_values
+   redirect_to admin_product_variants_path(@product) if @product.empty_option_values?
   end
 end

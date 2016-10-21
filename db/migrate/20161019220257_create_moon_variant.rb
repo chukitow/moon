@@ -2,9 +2,8 @@ class CreateMoonVariant < ActiveRecord::Migration
   def change
     create_table :moon_variants do |t|
       t.references :product
-      t.string     :name
       t.string     :sku
-      t.boolean    :is_master, defualt: false
+      t.boolean    :is_master, null: false, default: false
       t.integer    :position
       t.integer    :price
 

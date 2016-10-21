@@ -9,7 +9,15 @@ class Moon::Product < ActiveRecord::Base
 
   validates_presence_of :name
 
+  alias options :product_option_types
+
   def master_variant
     variants.find_by(is_master: true)
+  end
+
+  def empty_option_values?
+   options.empty? || !option_types
+                      .joins("LEFT OUTER JOIN #{Moon::OptionValue.table_name} ON #{Moon::OptionValue.table_name}.option_type_id = #{Moon::OptionType.table_name}.id")
+                      .where("#{Moon::OptionValue.table_name}.id IS NULL").empty?
   end
 end
