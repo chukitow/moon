@@ -39,7 +39,7 @@ class Moon::Admin::ImagesController < Moon::Admin::BaseController
 
   private
   def set_product
-    @product = Moon::Product.find(params[:product_id])
+    @product = Moon::Product.includes(:images).find(params[:product_id])
   end
 
   def set_image

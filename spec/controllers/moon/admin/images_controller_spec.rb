@@ -89,7 +89,7 @@ describe Moon::Admin::ImagesController, 'DELETE#destroy' do
       delete :destroy, id: image, product_id: product
     }.to change(Moon::Asset, :count).by(-1)
   end
-  it 'deletes the requested asset' do
+  it 'redirects to admin product images path' do
     delete :destroy, id: image, product_id: product
 
     expect(response).to redirect_to(admin_product_images_path(product))

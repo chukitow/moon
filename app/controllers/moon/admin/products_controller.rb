@@ -8,6 +8,7 @@ class Moon::Admin::ProductsController < Moon::Admin::BaseController
 
   def new
     @product = Moon::Product.new
+    @product.variants.new
   end
 
   def create
@@ -45,7 +46,8 @@ class Moon::Admin::ProductsController < Moon::Admin::BaseController
   def product_params
     params.require(:product).permit(
       :name, :master_price, :available_on, :description, :meta_title,
-      :meta_keywords, :meta_description, option_type_ids: []
+      :meta_keywords, :meta_description, option_type_ids: [],
+      variants_attributes: [:id, :price, :sku, :is_master]
     )
   end
 end

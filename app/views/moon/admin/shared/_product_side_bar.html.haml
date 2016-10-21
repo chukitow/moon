@@ -8,3 +8,8 @@
     %a{href: admin_product_images_path(@product)}
       %span.glyphicon.glyphicon-picture
       Images
+
+  %li{class: "#{option[:variants]}", role: 'presentation'}
+    %a{href: admin_product_variants_path(@product)}
+      %span.glyphicon.glyphicon-th-large
+      Variants

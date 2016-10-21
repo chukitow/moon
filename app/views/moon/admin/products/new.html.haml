@@ -8,11 +8,15 @@
 
       = bootstrap_form_for([:admin, @product]) do |f|
         = f.text_field :name
-        .row
-          .col-md-6
-            = f.text_field :available_on, class: 'datepicker'
-          .col-md-6
-            = f.text_field :master_price
+        = f.fields_for :variants, @product.master_variant do |ff|
+          .row
+            .col-md-4
+              = f.text_field :available_on, class: 'datepicker'
+            .col-md-4
+              = ff.text_field :sku
+            .col-md-4
+              = ff.text_field :price, label: 'Master price'
+              = ff.hidden_field :is_master, value: 1
 
         = f.submit class: 'btn btn-success'
 
