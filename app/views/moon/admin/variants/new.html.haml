@@ -3,6 +3,12 @@
     .col-md-4.col-md-push-8
       = render partial: 'moon/admin/shared/product_side_bar', locals: { option: { variants: 'active' } }
     .col-md-8.col-md-pull-4
+      %h2
+        %a{href: admin_products_path}
+          Products
+        \/ #{@product.name}
+
+      %br
       .well
         %legend
           New variant

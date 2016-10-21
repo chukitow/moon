@@ -1,10 +1,10 @@
 = bootstrap_form_for([:admin, @product, @variant]) do |f|
-  = f.text_field :name, label: 'Presentation'
-  .row
-    .col-md-6
-      = f.text_field :sku
-    .col-md-6
-      = f.text_field :price
+
+  - @product.option_types.each do |option_type|
+    = f.collection_select :option_value_ids, option_type.option_values, :id, :presentation, {label: option_type.presentation, include_blank: true}, {name: 'variant[option_value_ids][]'}
+
+  = f.text_field :sku
+  = f.text_field :price
 
   = f.submit class: 'btn btn-success'
 
