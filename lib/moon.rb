@@ -7,6 +7,7 @@ require 'bootstrap_form'
 require 'bootstrap-datepicker-rails'
 require 'carrierwave'
 require 'cocoon'
+require 'money'
 require "moon/engine"
 
 module Moon

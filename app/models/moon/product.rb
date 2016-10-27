@@ -11,6 +11,8 @@ class Moon::Product < ActiveRecord::Base
 
   alias options :product_option_types
 
+  scope :available, -> { where('available_on <= ?', Date.today) }
+
   def master_variant
     variants.find_by(is_master: true)
   end
@@ -19,5 +21,9 @@ class Moon::Product < ActiveRecord::Base
    options.empty? || !option_types
                       .joins("LEFT OUTER JOIN #{Moon::OptionValue.table_name} ON #{Moon::OptionValue.table_name}.option_type_id = #{Moon::OptionType.table_name}.id")
                       .where("#{Moon::OptionValue.table_name}.id IS NULL").empty?
+  end
+
+  def price_formated
+    Money.new(master_variant.price, "MXN").format
   end
 end
