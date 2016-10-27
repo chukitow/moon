@@ -24,3 +24,21 @@ describe Moon::Product, '.empty_option_values?' do
     end
   end
 end
+
+describe Moon::Product, '.available' do
+  it 'retrieves all available products' do
+    FactoryGirl.create(:product, available_on: Date.tomorrow)
+    FactoryGirl.create(:product, available_on: Date.today)
+
+    expect(Moon::Product.available.count).to eq(1)
+  end
+end
+
+describe Moon::Product, '.price_formated' do
+  it 'retrieves price with format' do
+    variant = FactoryGirl.create(:variant, is_master: true, price: 200)
+    product = FactoryGirl.create(:product, variants: [variant])
+
+    expect(product.price_formated).to eq('$2.00')
+  end
+end
