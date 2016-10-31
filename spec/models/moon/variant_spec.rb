@@ -14,3 +14,11 @@ describe Moon::Variant, '.options_text' do
     expect(variant.options_text).to eq("Size: L")
   end
 end
+
+describe Moon::Variant, '.price_formated' do
+  it 'formats variant price' do
+    variant = FactoryGirl.create(:variant, price: 1000)
+
+    expect(variant.price_formated).to eq("$10.00")
+  end
+end

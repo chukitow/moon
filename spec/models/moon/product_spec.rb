@@ -42,3 +42,24 @@ describe Moon::Product, '.price_formated' do
     expect(product.price_formated).to eq('$2.00')
   end
 end
+
+describe Moon::Product, '.has_variants' do
+  context 'when product has variants' do
+    it 'returns true' do
+      variant_master = FactoryGirl.create(:variant, is_master: true, price: 200)
+      variant = FactoryGirl.create(:variant, price: 200)
+      product = FactoryGirl.create(:product, variants: [variant_master, variant])
+
+      expect(product.has_variants?).to be_truthy
+    end
+  end
+
+  context 'when product no has variants' do
+    it 'returns false' do
+      variant_master = FactoryGirl.create(:variant, is_master: true, price: 200)
+      product = FactoryGirl.create(:product, variants: [variant_master])
+
+      expect(product.has_variants?).to be_falsy
+    end
+  end
+end

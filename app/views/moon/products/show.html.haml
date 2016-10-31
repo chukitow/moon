@@ -1,0 +1,45 @@
+.container
+  .row
+    .col-md-4
+      .panel.panel-default
+        .panel-body
+          = image_tag(@product.images.first.attachment_file_name.url, class: 'img-responsive center-block')
+    .col-md-8
+      %h1
+        = @product.name
+      .well
+        = @product.description
+
+      .cart
+        - if !@product.has_variants?
+          .col-md-5
+            .cart-product-price
+              %h6.cart-product-title
+                Price
+              .cart-product-price
+                %span
+                  = @product.price_formated
+            .cart-form
+              %br
+              .input-group
+                %input.form-control{type: 'number', min: 1, value: 1}
+                %span.input-group-btn
+                  %button.btn.btn-success{:type => "button"}
+                    Add to cart
+        - else
+          .cart-variants.col-md-6
+            %h3
+              Variants
+            %ul.list-group
+              - @product.variants.not_master.each do |variant|
+                %li
+                  %input{type: 'radio'}
+                  %label
+                    %span
+                      = "#{variant.options_text} #{(variant.price_formated)}"
+            %br
+            .input-group
+              %input.form-control{type: 'number', min: 1, value: 1}
+              %span.input-group-btn
+                %button.btn.btn-success{:type => "button"}
+                  Add to cart

@@ -26,4 +26,8 @@ class Moon::Product < ActiveRecord::Base
   def price_formated
     Money.new(master_variant.price, "MXN").format
   end
+
+  def has_variants?
+    variants.not_master.count >= 1
+  end
 end
