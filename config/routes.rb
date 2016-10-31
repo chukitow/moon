@@ -8,5 +8,5 @@ Moon::Engine.routes.draw do
     resources :option_types, except: [:show]
   end
 
-  resources :products, only: [:index]
+  resources :products, only: [:index, :show]
 end

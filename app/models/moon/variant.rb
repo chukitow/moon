@@ -22,4 +22,8 @@ class Moon::Variant < ActiveRecord::Base
 
     values.to_sentence({ words_connector: ", ", two_words_connector: ", " })
   end
+
+  def price_formated
+    Money.new(price, "MXN").format
+  end
 end

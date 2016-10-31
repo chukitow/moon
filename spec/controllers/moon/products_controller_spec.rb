@@ -12,3 +12,17 @@ describe Moon::ProductsController, 'GET#index' do
     expect(response).to render_template(:index)
   end
 end
+
+describe Moon::ProductsController, 'GET#show' do
+  routes        { Moon::Engine.routes }
+  let(:product) { FactoryGirl.create(:product) }
+  before        { get :show, id: product }
+
+  it 'retrieves the requested product' do
+    expect(assigns(:product)).to eq(product)
+  end
+
+  it 'renders show template' do
+    expect(response).to render_template(:show)
+  end
+end
