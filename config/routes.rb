@@ -9,4 +9,5 @@ Moon::Engine.routes.draw do
   end
 
   resources :products, only: [:index, :show]
+  resources :orders, except: [:show]
 end

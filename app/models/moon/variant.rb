@@ -1,6 +1,7 @@
 class Moon::Variant < ActiveRecord::Base
   has_many :option_value_variants
   has_many :option_values, through: :option_value_variants
+  has_many :line_items
 
   belongs_to :product
 
